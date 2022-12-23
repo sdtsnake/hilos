@@ -1,8 +1,5 @@
 package work.oscarramos.hilos.ejemplosync;
 
-import work.oscarramos.hilos.ejemplosync.runable.Consumidor;
-import work.oscarramos.hilos.ejemplosync.runable.Panadero;
-
 import java.util.concurrent.ThreadLocalRandom;
 
 public class EjemploProductorConsumidorJava8 {

@@ -1,6 +1,5 @@
 package work.oscarramos.hilos.ejemploexecutor;
 
-import java.sql.SQLOutput;
 import java.util.concurrent.*;
 
 public class EjemploExecutorFuture2 {

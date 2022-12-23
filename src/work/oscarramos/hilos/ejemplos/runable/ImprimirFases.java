@@ -1,7 +1,5 @@
 package work.oscarramos.hilos.ejemplos.runable;
 
-import work.oscarramos.hilos.ejemplos.EjemploSincronizacionThread;
-
 import static work.oscarramos.hilos.ejemplos.EjemploSincronizacionThread.imprimirFaces;
 
 public class ImprimirFases implements Runnable{
