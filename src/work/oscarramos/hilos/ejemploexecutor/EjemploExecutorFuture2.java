@@ -1,11 +1,14 @@
 package work.oscarramos.hilos.ejemploexecutor;
 
+import java.sql.SQLOutput;
 import java.util.concurrent.*;
 
 public class EjemploExecutorFuture2 {
     public static void main(String[] args) throws InterruptedException, ExecutionException, TimeoutException {
-        ExecutorService excutor = Executors.newSingleThreadExecutor();
+        ThreadPoolExecutor excutor = (ThreadPoolExecutor) Executors.newFixedThreadPool(3);
 
+        System.out.println("Tamaño del pool: " + excutor.getPoolSize());
+        System.out.println("Cantidad de tareas en la cola: " + excutor.getQueue().size());
         Callable<String> tarea = () ->{
             System.out.println("Inicio de la tarea....");
             try {
@@ -20,7 +23,7 @@ public class EjemploExecutorFuture2 {
         };
 
         Callable<Integer> tarea2 = () -> {
-            System.out.println("Iniciando tarea 2 ....");
+            System.out.println("Iniciando tarea 3 ....");
             TimeUnit.SECONDS.sleep(3);
             return 10;
         };
@@ -28,6 +31,9 @@ public class EjemploExecutorFuture2 {
         Future<String> restualtado = excutor.submit(tarea);
         Future<String> restualtado2 = excutor.submit(tarea);
         Future<Integer> restualtado3 = excutor.submit(tarea2);
+
+        System.out.println("Tamaño del pool: " + excutor.getPoolSize());
+        System.out.println("Cantidad de tareas en la cola: " + excutor.getQueue().size());
         excutor.shutdown();
         System.out.println("Continuando con la ejecucion del metodo main");
 
@@ -39,8 +45,12 @@ public class EjemploExecutorFuture2 {
                     restualtado3.isDone()? "finalizo":"en proceso"));
             TimeUnit.MILLISECONDS.sleep(1000);
         }
-        System.out.println("Obtenemos el resultado de la tarea : " + restualtado.get());
-        System.out.println(restualtado.isDone());
+        System.out.println("Obtenemos el resultado 1 de la tarea : " + restualtado.get());
+        System.out.println("Finaliza la tarea 1 " + restualtado.isDone());
+        System.out.println("Obtenemos el resultado 2 de la tarea : " + restualtado2.get());
+        System.out.println("Finaliza la tarea 2 " +  restualtado.isDone());
+        System.out.println("Obtenemos el resultado 3 de la tarea : " + restualtado3.get());
+        System.out.println("Finaliza la tarea 3 " +  restualtado.isDone());
 
 
    }

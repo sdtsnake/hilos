@@ -26,7 +26,7 @@ public class Panaderia {
                 e.printStackTrace();
             }
         }
-        System.out.println("Clienbte se lleva el : " + this.pan);
+        System.out.println("Cliente se lleva el : " + this.pan);
         this.disponible = false;
         notify();
         return pan;
